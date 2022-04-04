@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="hamming-encoder">
+        <h1>Hamming code for
+            <select v-on : change= " initDataBits ()" v-model= "numberOfDataBits ">
+                <option value="4">4</option>
+                <option value="8">8</option>
+            </select>
+            bits</h1>
+
+        <br>
+        <ul v-for="(bit , index ) in dataBits ">
+            <li>
+                <input maxlength= "1" : placeholder= " 'D '+ index " v-model= " bit.data " v-bind : class= "[validateBit(bit.data) ? 'valid-input ' : 'invalid-input ']" />
+            </li>
+        </ul>
+        <br>
+        <button v-on:click="send()">Send</button>
+        <p>{{status}}</p>
+    </div>
+
+    <script src="app.js"></script>
+    <script src="libs/axios.js"></script>
+    <script src="libs/vue.js"></script>
+</body>
+</html>
